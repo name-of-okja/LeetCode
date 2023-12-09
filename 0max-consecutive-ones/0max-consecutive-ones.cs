@@ -1,6 +1,6 @@
 public class Solution {
     public int FindMaxConsecutiveOnes(int[] nums) {
-         var max = 0;
+        var max = 0;
         var temp = 0;
 
         for (int i = 0; i < nums.Length; i++)
