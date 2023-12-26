@@ -8,19 +8,7 @@ public:
         {
             if (nums[i] != val)
             {
-                result++;
-            }
-            else
-            {
-                for (int j = i + 1; j < nums.size(); j++)
-                {
-                    if (nums[j] != val)
-                    {
-                        swap(nums[i], nums[j]);
-                        result++;
-                        break;
-                    }
-                }
+                nums[result++] = nums[i];
             }
         }
         return result;
