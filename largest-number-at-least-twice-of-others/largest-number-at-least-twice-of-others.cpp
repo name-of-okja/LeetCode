@@ -2,24 +2,21 @@ class Solution {
 public:
     int dominantIndex(vector<int> &nums)
     {
-        int m = -1, maxIndex;
+        int a = 0, b = 0, maxIdx = 0;
         for (int i = 0; i < nums.size(); ++i)
         {
-            if (nums[i] > m)
+            if (nums[i] < b)
+                continue;
+
+            b = nums[i];
+
+            if (b > a)
             {
-                m = nums[i];
-                maxIndex = i;
+                swap(a, b);
+                maxIdx = i;
             }
         }
 
-        for (int i = 0; i < nums.size(); ++i)
-        {
-            if (nums[i] * 2 > m && i != maxIndex)
-            {
-                return -1;
-            }
-        }
-
-        return maxIndex;
+        return a >= b * 2 ? maxIdx : -1;
     }
 };
