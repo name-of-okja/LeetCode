@@ -7,7 +7,7 @@ public:
             if (digits[i] != 9)
             {
                 digits[i]++;
-                break;
+                return digits;
             }
             else
             {
@@ -15,10 +15,7 @@ public:
             }
         }
 
-        if (digits[0] == 0)
-        {
-            digits.insert(digits.begin(), 1);
-        }
+        digits.insert(digits.begin(), 1);
 
         return digits;
     }
