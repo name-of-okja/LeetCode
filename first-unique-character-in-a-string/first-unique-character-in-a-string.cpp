@@ -4,7 +4,7 @@ public:
     {
         unordered_map<char, int> map;
 
-        for (auto key : s) 
+        for (char& key : s) 
         {
             map[key]++;
         }
