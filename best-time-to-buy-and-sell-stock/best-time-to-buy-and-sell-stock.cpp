@@ -8,7 +8,7 @@ public:
 
         while (sell < prices.size())
         {
-            if (prices[buy] > prices[sell])
+            if (prices[buy] >= prices[sell])
             {
                 buy = sell;
             }
