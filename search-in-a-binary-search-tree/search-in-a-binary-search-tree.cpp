@@ -13,29 +13,18 @@ class Solution {
 public:
     TreeNode *searchBST(TreeNode *root, int val)
     {
-        queue<TreeNode *> que;
-        que.push(root);
-
-        while (!que.empty())
+        if (root == nullptr || root->val == val)
         {
-            auto pos = que.front();
-            que.pop();
-
-            if (pos->val == val)
-            {
-                return pos;
-            }
-
-            if (pos->left != nullptr)
-            {
-                que.push(pos->left);
-            }
-            if (pos->right != nullptr)
-            {
-                que.push(pos->right);
-            }
+            return root;
         }
 
-        return nullptr;
+        if (root->val > val)
+        {
+            return searchBST(root->left, val);
+        }
+        else
+        {
+            return searchBST(root->right, val);
+        }
     }
 };
