@@ -9,7 +9,5 @@ class Solution:
     def countNodes(self, root: Optional[TreeNode]) -> int:
         if root is None:
             return 0
-        val = 1
-        val += self.countNodes(root.left)
-        val += self.countNodes(root.right)
-        return val
+        
+        return self.countNodes(root.left) + self.countNodes(root.right) + 1
