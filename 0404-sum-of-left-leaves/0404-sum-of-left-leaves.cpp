@@ -29,7 +29,12 @@ private:
             return 0;
         }
 
-        int result = isAdd ? root->val : 0;
+        int result = 0;
+        if (isAdd && root->left == nullptr && root->right == nullptr)
+        {
+            result = root->val;
+        }
+
         result += _sumOfLeftLeaves(root->left, true);
         result += _sumOfLeftLeaves(root->right, false);
 
