@@ -3,23 +3,24 @@ class Solution
 public:
     vector<int> nextGreaterElement(vector<int> &nums1, vector<int> &nums2)
     {
-        vector<int> result;
-        unordered_map<int, int> m;
+        vector<int> result(nums1.size(), -1);
 
-        for (int i = 0; i < nums2.size(); ++i)
+        for (int i = 0; i < nums1.size(); ++i)
         {
-            int v = -1;
-            if (i + 1 < nums2.size() && nums2[i] < nums2[i + 1])
+            for (int j = 0; j < nums2.size(); ++j)
             {
-                v = nums2[i + 1];
+                if (nums1[i] == nums2[j])
+                {
+                    for (int k = j + 1; k < nums2.size(); ++k)
+                    {
+                        if (nums2[j] < nums2[k])
+                        {
+                            result[i] = nums2[k];
+                            break;
+                        }
+                    }
+                }
             }
-
-            m[nums2[i]] = v;
-        }
-
-        for (int n : nums1)
-        {
-            result.push_back(m.find(n)->second);
         }
 
         return result;
