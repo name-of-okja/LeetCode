@@ -4,14 +4,8 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
 
-        n = len(nums)
-        read, write = 0, 0
-        while write < n and read < n:
-            if nums[write] != 0:
+        write = 0
+        for read in range(len(nums)):
+            if nums[read] != 0:
+                nums[read], nums[write] = nums[read], nums[write]
                 write += 1
-            elif read <= write:
-                read = write + 1
-            elif nums[read] == 0:
-                read += 1
-            else:
-                nums[read], nums[write] = nums[write], nums[read]
