@@ -4,18 +4,22 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
 class Solution:
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
-        def tree_to_list(root: Optional[TreeNode]):
-            if root is None:
-                return []
-            if root.left is None and root.right is None:
-                return [root.val]
+        def func(node: TreeNode):
+            if not node.left and not node.right:
+                yield node.val
 
-            return tree_to_list(root.left) + tree_to_list(root.right)
+            if node.left:
+                yield from func(node.left)
+            if node.right:
+                yield from func(node.right)
 
-        root1_list = tree_to_list(root1)
-        root2_list = tree_to_list(root2)
+        if not root1 or not root2:
+            return False
 
-        return root1_list == root2_list
+        root1_leaf = list(func(root1))
+        root2_leaf = list(func(root2))
 
+        return root1_leaf == root2_leaf
